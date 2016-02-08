@@ -18,7 +18,7 @@ measure-js is able to measure execution time of a method, time needed for promis
 #### Method execution time
 
 ```typescript
-@measure.timeTo('draw a fractal')
+@measure.durationOf('drawing a fractal')
 private draw():void {
   // heavy drawing algorithm
 }
@@ -44,4 +44,61 @@ private animateJump():Promise<any> {
 }
 ```
 
-The exmaple above is a method which draws frames on a canvas using `requestAnimationFrame`. Returned promise is resolved on animation finish. Frame rate (FPS – frames per second) is measured only in time between the method call and the promise resolution. Such behaviour allows us to collect pefrormance info only whent it's necessary.
+The exmaple above is a method which draws frames on a canvas using `requestAnimationFrame`. Returned promise is resolved on animation finish. Frame rate (FPS – frames per second) is measured only in time between the method call and the promise resolution. Such behaviour allows to collect pefrormance info only when it's necessary.
+
+#### Custom frame rate meter
+Start and stop frame rate measurement whenever you want:
+
+```typescript
+draggable.addEventListener('mousedown', () =>
+  measure.frameRateStart('dragging an object');
+});
+
+draggable.addEventListener('mousemove', () =>
+  // moving an object
+});
+
+draggable.addEventListener('mouseup', () => {
+  measure.frameRateStop('dragging an object');
+});
+```
+
+#### Time from a marker
+
+You can mark some event on a timeline and then use `measure.timeFrom()` method to measure duration between the marker and the current time:
+```typescript
+measure.mark('wav encoding start');
+
+// time-consuming operation
+
+measure.timeFrom('wav encoding start', {as: 'wav encoding time'});
+```
+
+#### Time between markers
+
+You can also put several markers on a timeline and measure time elapsed between them.
+
+```typescript
+private encodeWave():void {
+  measure.mark('wav encoding start');
+  // encoding logic
+  measure.mark('wav encoding end');
+  measure.timeBetween('wav encoding start', 'wav encoding end', {as: 'wav encoding'});
+}
+```
+Note: The example above can be written in a shorhand form of a decorator:
+
+```typescript
+@measure.durationOf('wav encoding')
+private encodeWave():void {
+  // encoding logic
+}
+```
+
+As `measure.timeBetween()` is a wrapper for [`performance.measure()`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure), you can use one of predefined markers instead:
+
+```typescript
+measure.timeBetween(PerformanceTiming.navigationStart,
+  PerformanceTiming.responseStart, {as: 'time to first byte'})
+```
+See [`PerformanceTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming) for list of all available predefined markers.
