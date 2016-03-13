@@ -1,0 +1,30 @@
+{
+  "name": "measure-js",
+  "version": "0.0.1",
+  "description": "Measure performance of a javascript app, push data to the influxDB and track changes",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michalstocki/measure-js.git"
+  },
+  "keywords": [
+    "performance",
+    "javascript",
+    "InfluxDB",
+    "Performance",
+    "API",
+    "statistics"
+  ],
+  "author": "Michał Stocki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michalstocki/measure-js/issues"
+  },
+  "homepage": "https://github.com/michalstocki/measure-js#readme"
+}
