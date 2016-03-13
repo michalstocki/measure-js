@@ -1,3 +1,15 @@
-.idea
-vendor/
+.tmp/
+.tscache/
+.idea/
+docs/
+dist/
 node_modules/
+npm-debug.log
+report/
+vendor/
+typings/
+src/**/*.js
+src/**/*.js.map
+test/**/*.js
+test/**/*.js.map
+!test/karma.conf.js

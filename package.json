@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "postinstall": "./node_modules/.bin/jspm install && ./node_modules/.bin/typings install"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,47 @@
   "bugs": {
     "url": "https://github.com/michalstocki/measure-js/issues"
   },
-  "homepage": "https://github.com/michalstocki/measure-js#readme"
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "~2.11.0",
+    "chai": "~3.5.0",
+    "del": "~2.2.0",
+    "eslint": "~2.2.0",
+    "gulp": "~3.9.1",
+    "gulp-eslint": "~2.0.0",
+    "gulp-tslint": "~4.3.2",
+    "gulp-typedoc": "~1.2.1",
+    "jspm": "~0.16.29",
+    "karma": "~0.13.21",
+    "karma-chai-sinon": "~0.1.5",
+    "karma-coverage": "~0.5.3",
+    "karma-jspm": "~2.0.2",
+    "karma-junit-reporter": "~0.3.8",
+    "karma-mocha": "~0.2.1",
+    "karma-phantomjs-launcher": "~1.0.0",
+    "mocha": "~2.4.5",
+    "phantomjs-prebuilt": "~2.1.4",
+    "run-sequence": "~1.1.5",
+    "sinon": "~1.17.2",
+    "sinon-chai": "~2.8.0",
+    "tslint": "~3.4.0",
+    "typescript": "^1.8.2",
+    "typings": "~0.6.8"
+  },
+  "homepage": "https://github.com/michalstocki/measure-js#readme",
+  "engines": {
+    "node": ">=5.6.0"
+  },
+  "jspm": {
+    "directories": {
+      "packages": "vendor/jspm_packages"
+    },
+    "configFile": "jspm.conf.js",
+    "dependencies": {
+      "ts": "github:frankwallis/plugin-typescript@^4.0.1"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.8.2"
+    }
+  }
 }
