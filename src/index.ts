@@ -1,2 +1,5 @@
 import {Measure} from './Measure';
-export default Measure;
+
+import {Sender} from './sending/Sender';
+const measure:Measure = new Measure(new Sender());
+export default measure;

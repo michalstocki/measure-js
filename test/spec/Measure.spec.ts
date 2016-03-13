@@ -4,6 +4,6 @@ import {expect} from '../references';
 describe('Measure', () => {
   it('exists', () => {
     expect(Measure).to.be.ok;
-    expect(new Measure()).to.be.an.instanceOf(Measure);
+    expect(new Measure(null)).to.be.an.instanceOf(Measure);
   });
 });
